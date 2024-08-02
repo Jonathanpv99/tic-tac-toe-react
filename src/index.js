@@ -33,6 +33,11 @@ const Board = () =>{
     setXIsNext(!xIsNext)
   }
 
+  const handleReset = () => {
+    setSquares(initialSquares);
+    setXIsNext(true);
+  }
+
   const renderSquare = (i) =>{
     return (
     <Square value={squares[i]}
@@ -56,6 +61,9 @@ const Board = () =>{
       <div class="board-row">
         {renderSquare(6)}{renderSquare(7)}{renderSquare(8)}
       </div>
+      <div className="contenedorBtn">
+        <button className="btnReset" onClick={handleReset}>Jugar Otra Vez</button>
+      </div>
     </div>
   )
 }
@@ -78,9 +86,14 @@ ReactDOM.render(
 
 function calculateWiner(squares) {
   const lines = [
-    [0,1,2], [3,4,5], [6,7,8],
-    [0,3,6], [1,4,7], [2,5,8],
-    [0,4,7], [2,4,6],
+    [0, 1, 2],
+    [3, 4, 5], 
+    [6, 7, 8], 
+    [0, 3, 6], 
+    [1, 4, 7], 
+    [2, 5, 8], 
+    [0, 4, 8], 
+    [2, 4, 6], 
   ];
 
   for (let line of lines) {
